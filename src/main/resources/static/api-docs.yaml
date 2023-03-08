@@ -1,0 +1,66 @@
+openapi: 3.0.2
+info:
+    title: SistemaLegajos
+    version: '1.0'
+    description: Api de Legajos
+paths:
+    '/legajos/{idLegajos}/consultaLegajos':
+        servers:
+            -
+                url: 'http://localhost:5000/legajos'
+                description: ''
+        get:
+            parameters:
+                -
+                    name: idLegajos
+                    schema:
+                        type: string
+                    in: path
+                    required: true
+            responses:
+                '200':
+                    $ref: '#/components/responses/ConsultaLegajosResponse'
+            operationId: getConsultaLegajos
+            description: ok
+        parameters:
+            -
+                name: idLegajos
+                description: id de legajos
+                schema:
+                    type: string
+                in: path
+                required: true
+components:
+    schemas:
+        ConsultaLegajos:
+            description: consulta de legajos
+            type: object
+            properties:
+                idLegajos:
+                    description: id de legajo
+                    type: string
+                Apellido:
+                    description: ''
+                    type: string
+                Nombre:
+                    description: ''
+                    type: string
+                Documento:
+                    description: ''
+                    type: string
+                Cuil:
+                    description: ''
+                    type: string
+                FechaNacimiento:
+                    description: ''
+                    type: string
+                Sexo:
+                    description: ''
+                    type: string
+    responses:
+        ConsultaLegajosResponse:
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/ConsultaLegajos'
+            description: ''
